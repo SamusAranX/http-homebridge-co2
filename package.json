@@ -1,0 +1,25 @@
+{
+  "name": "homebridge-http-co2",
+  "version": "1.0.0",
+  "description": "homebridge http(s) plugin for carbon dioxide sensors",
+  "license": "Apache-2.0",
+  "keywords": [
+    "homebridge-plugin",
+    "http",
+    "co2"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "author": {
+    "name": "@SamusAranX"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SamusAranX/homebridge-http-co2.git"
+  },
+  "dependencies": {
+    "request": "^2.5.0"
+  }
+}
