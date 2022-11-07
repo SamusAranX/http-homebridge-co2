@@ -1,6 +1,6 @@
 {
   "name": "homebridge-http-co2",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "homebridge http(s) plugin for carbon dioxide sensors",
   "license": "Apache-2.0",
   "keywords": [

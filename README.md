@@ -14,6 +14,7 @@ Because this is a plugin for CO2 sensors instead of temperature sensors, the con
     "url": "http://example.org/json",
     "fieldName": "co2",
     "threshold": 1500,
-    "update_interval": 10000
+    "update_interval": 10000,
+    "abnormalCO2LevelAlerts": true
 }
 ```

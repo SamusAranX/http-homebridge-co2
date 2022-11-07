@@ -23,6 +23,7 @@ function HttpCarbonDioxide(log, config) {
 	this.fieldName = ( config["field_name"] != null ? config["field_name"] : "co2" );
 	this.threshold = Number(config["threshold"] || 1500);
 	this.isCO2Detected = Characteristic.CarbonDioxideDetected.CO2_LEVELS_NORMAL;
+	this.abnormalCO2LevelAlerts = config["abnormalCO2LevelAlerts"] || false;
 
 	this.timeout = config["timeout"] || DEF_TIMEOUT;
 	this.auth = config["auth"];
@@ -87,7 +88,12 @@ HttpCarbonDioxide.prototype = {
 			});
 		}).then((value) => {
 			this.co2Service.getCharacteristic(Characteristic.CarbonDioxideLevel).updateValue(value, null);
-			this.isCO2Detected = value >= this.threshold ? Characteristic.CarbonDioxideDetected.CO2_LEVELS_ABNORMAL : Characteristic.CarbonDioxideDetected.CO2_LEVELS_NORMAL;
+
+			if (this.abnormalCO2LevelAlerts) {
+				this.isCO2Detected = value >= this.threshold ? Characteristic.CarbonDioxideDetected.CO2_LEVELS_ABNORMAL : Characteristic.CarbonDioxideDetected.CO2_LEVELS_NORMAL;
+			} else {
+				this.isCO2Detected = Characteristic.CarbonDioxideDetected.CO2_LEVELS_NORMAL;
+			}
 			this.co2Service.getCharacteristic(Characteristic.CarbonDioxideDetected).updateValue(this.isCO2Detected, null);
 			return value;
 		}, (error) => {
